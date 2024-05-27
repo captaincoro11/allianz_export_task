@@ -1,20 +1,36 @@
 import { win,avg_daily_profit,price,names,rank,calmar_ratio,overall_profit,Action } from "./calculation";
+import { useState } from "react";
+import Switch from '@mui/material/Switch';
 
 function App() {
+  const [darkMode,setIsdarkMode] = useState(true);
+  const handleClick = ()=>{
+    setIsdarkMode(!darkMode)
+  }
   return (
-    <div className="  ">
-    <div className=" font-mono text-4xl font-medium mt-2 text-pink-400 underline ml-16 ">
+    <div className={darkMode?"":" bg-gray-900 h-screen text-white"}>
+
+    <div className="flex justify-between ">
+    <div className=" font-mono text-4xl font-medium  text-pink-400 underline ml-16 ">
     LeaderBoard
 
 
     </div>
+   <div>
+   <span className="font-mono">Click to Switch on {darkMode?"Dark Mode":"Light Mode"}</span>
+   <Switch onClick={handleClick}/>
+   </div> 
+    </div>
+    <div>
+
+    </div>
 
     <div className=" flex justify-center mt-4">
-      <div className="border p-4 w-11/12 rounded-lg shadow-lg shadow-pink-300  ">
+      <div className={darkMode?"border p-4 w-11/12 rounded-lg shadow-lg shadow-pink-300":"border p-4 w-11/12 border-pink-400 rounded-lg shadow-lg shadow-pink-300   "}>
 
       <div className="flex justify-between">
       <div className="text-2xl font-mono font-semibold ml-4  ">Basic BackTest</div>
-      <div className=" "><span className="border rounded-md bg-slate-300 font-mono p-2">Slippage</span><span className="border rounded-md font-mono p-2">0%</span></div>
+      <div className=" "><span className={darkMode?"border rounded-md bg-slate-300 font-mono p-2 ":"border rounded-md text-black bg-slate-300 font-mono p-2"}>Slippage</span><span className="border rounded-md font-mono p-2">0%</span></div>
 
       </div>
       
